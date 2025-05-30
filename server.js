@@ -10,6 +10,7 @@ connectDB();
 import adminRouter from './routes/adminRouter.route.js'
 import usersRouter from './routes/usersRouter.route.js'
 import productsRouter from './routes/productsRouter.route.js'
+import mainRouter from './routes/index.route.js'
 
 import cookieparser from 'cookie-parser';
 
@@ -30,10 +31,8 @@ app.use(cookieparser());
 app.use('/admin', adminRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
+app.use('/', mainRouter);
 
-app.get('/', (req, res) => {
-    res.send("Working");
-})
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
