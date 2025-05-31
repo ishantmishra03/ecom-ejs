@@ -5,17 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shop | Ecom - ejs</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+    />
   </head>
   <body class="min-h-screen flex flex-col">
-    <%- include('./partials/header') %>
-
+    <%- include('./partials/header') %> <% if(success.length > 0){ %>
+    <div
+      class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-md shadow-md z-50 max-w-md w-full text-center"
+    >
+      <%= success %>
+    </div>
+    <% } %>
     <div class="flex flex-col sm:flex-row flex-1 px-4 sm:px-20 py-10 gap-8">
-      <div class="w-full sm:w-[25%] flex flex-col items-start order-2 sm:order-1">
+      <div
+        class="w-full sm:w-[25%] flex flex-col items-start order-2 sm:order-1"
+      >
         <div class="flex items-center gap-2 mb-10">
           <h3 class="font-semibold">Sort by</h3>
           <form action="/shop">
-            <select class="border px-2 py-1 rounded-md focus:ring-2 focus:ring-blue-500" name="sortby">
+            <select
+              class="border px-2 py-1 rounded-md focus:ring-2 focus:ring-blue-500"
+              name="sortby"
+            >
               <option value="popular">Popular</option>
               <option value="newest">Newest</option>
             </select>
@@ -23,9 +36,13 @@
         </div>
 
         <div class="flex flex-col space-y-2 mb-16">
-          <a href="#" class="text-gray-800 hover:text-blue-600">New Collection</a>
+          <a href="#" class="text-gray-800 hover:text-blue-600"
+            >New Collection</a
+          >
           <a href="#" class="text-gray-800 hover:text-blue-600">All Products</a>
-          <a href="#" class="text-gray-800 hover:text-blue-600">Discounted Products</a>
+          <a href="#" class="text-gray-800 hover:text-blue-600"
+            >Discounted Products</a
+          >
         </div>
 
         <div class="flex flex-col space-y-2">
@@ -35,24 +52,35 @@
         </div>
       </div>
 
-      <div class="w-full sm:w-[75%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 order-1 sm:order-2">
+      <div
+        class="w-full sm:w-[75%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 order-1 sm:order-2"
+      >
         <% products.forEach(function(product){ %>
-          <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-all hover:shadow-2xl hover:scale-105 duration-300 ease-in-out">
-            <div class="w-full h-64 bg-[<%= product.bgColor %>]">
-              <img class="w-full h-full object-fit" 
-                src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" 
-                alt="<%= product.name %>">
-            </div>
-            <div class="flex justify-between items-center px-4 py-2 bg-[<%= product.panelColor %>] text-[<%= product.textColor %>] ">
-              <div>
-                <h3 class="text-lg font-semibold"><%= product.name %></h3>
-                <h4>₹ <%= product.price %></h4>
-              </div>
-              <a class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 text-white hover:bg-blue-600 transition duration-200" href="">
-                <i class="ri-add-line text-white"></i>
-              </a>
-            </div>
+        <div
+          class="bg-white rounded-lg overflow-hidden shadow-lg transition-all hover:shadow-2xl hover:scale-105 duration-300 ease-in-out"
+        >
+          <div class="w-full h-64 bg-[<%= product.bgColor %>]">
+            <img
+              class="w-full h-full object-fit"
+              src="data:image/jpeg;base64,<%= product.image.toString('base64') %>"
+              alt="<%= product.name %>"
+            />
           </div>
+          <div
+            class="flex justify-between items-center px-4 py-2 bg-[<%= product.panelColor %>] text-[<%= product.textColor %>]"
+          >
+            <div>
+              <h3 class="text-lg font-semibold"><%= product.name %></h3>
+              <h4>₹ <%= product.price %></h4>
+            </div>
+            <a
+              class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 text-white hover:bg-blue-600 transition duration-200"
+              href="/addtocart/<%= product._id %>"
+            >
+              <i class="ri-add-line text-white"></i>
+            </a>
+          </div>
+        </div>
         <% }) %>
       </div>
     </div>

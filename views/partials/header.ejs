@@ -17,10 +17,15 @@
           <a href="/">ECOM</a>
         </div>
 
+        <% var loggedin = typeof loggedin !== "undefined" ? loggedin : "true" %>
         <!-- Desktop Menu -->
-        <nav class="hidden md:flex space-x-8">
-          <a href="/" class="text-gray-800 hover:text-blue-600">Home</a>
+        <nav class="hidden md:flex space-x-8 items-center">
+         <% if(loggedin) { %>
           <a href="/shop" class="text-gray-800 hover:text-blue-600">Shop</a>
+          <a href="/cart" class="text-gray-800 hover:text-blue-600">Cart</a>
+          <a href="/cart" class="text-gray-800 hover:text-blue-600">My Account</a>
+          <a href="/users/logout" class="px-3 py-2 rounded-md bg-red-500 text-white">Logout</a>
+         <% } %>
         </nav>
 
         <!--Hamburger Menu-->
@@ -49,12 +54,20 @@
         id="mobile-menu"
         class="md:hidden hidden bg-white shadow-md px-6 py-4"
       >
-        <a href="/" class="block py-2 text-gray-800 hover:text-blue-600"
-          >Home</a
-        >
+       <% if(loggedin) { %>
         <a href="/shop" class="block py-2 text-gray-800 hover:text-blue-600"
           >Shop</a
         >
+        <a href="/cart" class="block py-2 text-gray-800 hover:text-blue-600"
+          >Cart</a
+        >
+        <a href="/cart" class="block py-2 text-gray-800 hover:text-blue-600"
+          >My Account</a
+        >
+        <a href="/users/logout" class="block py-2 text-red-500"
+          >Logout</a
+        >
+        <%  } %>
       </div>
     </header>
 

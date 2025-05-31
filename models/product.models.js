@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const postSchema = mongoose.Schema({
+const productSchema = mongoose.Schema({
     image: Buffer,
     name : String,
     price : Number,
@@ -13,6 +13,6 @@ const postSchema = mongoose.Schema({
     textColor : String
 });
 
-const postModel = mongoose.model('post', postSchema);
+const productModel = mongoose.model('product', productSchema);
 
-export default postModel
+export default productModel
