@@ -1,12 +1,15 @@
 import express from 'express';
+import {isLoggedIn} from '../middlewares/isLoggedIn.js'
 const router = express.Router();
 
-import { registerUser } from "../controllers/authController.controller.js"
+import { registerUser, loginUser,logout } from "../controllers/authController.controller.js"
 
 router.get('/', (req, res) => {
     res.send("Hey user");
 })
 
 router.post('/register', registerUser);
+router.post('/login', loginUser);
+router.post('/logout', isLoggedIn, logout)
 
 export default router;
