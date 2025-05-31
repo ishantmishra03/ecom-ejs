@@ -10,6 +10,6 @@ router.get('/', (req, res) => {
 
 router.post('/register', registerUser);
 router.post('/login', loginUser);
-router.post('/logout', isLoggedIn, logout)
+router.get('/logout', isLoggedIn, logout)
 
 export default router;

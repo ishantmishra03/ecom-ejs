@@ -10,7 +10,7 @@ export const registerUser = async (req, res) => {
         // Check if user already exists 
         const user = await userModel.findOne({ email });
         if (user) {
-            req.flash("errro", "You already have an account, please login.")
+            req.flash("error", "You already have an account, please login.")
             return res.redirect("/");
         }
 
